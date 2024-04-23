@@ -45,7 +45,10 @@ class MorningStats():
         self.data = self.data
         self.end_date =  datetime.now()
         self.start_date = self.end_date - timedelta(days=self.days)
-        self.vol = yf.Ticker('^VIX')
+        if self.underlying == '^GSPC':
+            self.vol = yf.Ticker('^VIX')
+        elif self.underlying == '^NDX':
+            self.vol = yf.Ticker('^VXN')
         vix = self.vol.history(interval='1d', start=self.start_date,
                                  end=self.end_date)
         vix.index = vix.index.date
