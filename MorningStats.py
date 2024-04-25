@@ -35,6 +35,13 @@ class MorningStats():
         plt.bar(self.atr_data.index[-20:], self.atr_data['RNG'].tail(20), label='Range',
                color='orange', alpha = 0.8, zorder=2)
         plt.plot(self.atr_data['ATR'].tail(20), color='m', label='20d ATR', zorder=3)
+        plt.plot(self.atr_data.index[-1], self.atr_data['ATR'].iloc[-1],
+                 marker='o', markersize=5, color='m')
+        plt.annotate(f"{self.atr_data['ATR'].iloc[-1]:.2f}",
+                     (self.atr_data.index[-1], self.atr_data['ATR'].iloc[-1]),
+                     textcoords="offset points",
+                     xytext=(0,10), color='m',
+                     ha='center')
         plt.xlabel('Date')
         plt.ylabel('Range')
         plt.title(f'{self.symbol} Trading Range')
@@ -67,6 +74,13 @@ class MorningStats():
         plt.figure(figsize=(10, 6))
         fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 6), sharex=True)
         ax1.plot(close_close['VRP'])
+        ax1.plot(close_close['VRP'].index[-1], close_close['VRP'].iloc[-1],
+                 marker='o', markersize=3, color='cyan')
+        ax1.annotate(f"{close_close['VRP'].iloc[-1]:.2f}",
+                     (close_close['VRP'].index[-1], close_close['VRP'].iloc[-1]),
+                     textcoords="offset points",
+                     xytext=(0,10), color='cyan',
+                     ha='left')
         ax1.plot(close_close['rpmean'], color='r', alpha=0.25)
         ax1.plot(close_close['rpmean'] + close_close['std'], color='y', alpha=0.25, label='1σ')
         ax1.plot(close_close['rpmean'] - close_close['std'], color='y', alpha=0.25)
