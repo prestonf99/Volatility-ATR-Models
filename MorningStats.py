@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import pandas as pd
 import numpy as np
+import matplotlib.patheffects as PathEffects
 plt.style.use('dark_background')
 plt.rcParams['axes.facecolor'] = '0.05'
 plt.rcParams['grid.color'] = '0.15'
@@ -40,11 +41,15 @@ class MorningStats():
         plt.annotate(f"{self.atr_data['ATR'].iloc[-1]:.2f}",
                      (self.atr_data.index[-1], self.atr_data['ATR'].iloc[-1]),
                      textcoords="offset points",
-                     xytext=(0,10), color='m',
-                     ha='center')
+                     xytext=(0,10), color='deeppink',
+                     ha='left', fontweight='bold')#.set_path_effects(text_effect)
         plt.xlabel('Date')
         plt.ylabel('Range')
-        plt.title(f'{self.symbol} Trading Range')
+        if self.symbol == 'SPX':
+            self.sym = 'S&P 500'
+        elif self.symbol == 'NDX':
+            self.sym = 'Nasdaq 100'
+        plt.title(f'{self.sym} Trading Range')
         plt.legend()
         plt.gcf().autofmt_xdate();
     
@@ -75,12 +80,12 @@ class MorningStats():
         fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 6), sharex=True)
         ax1.plot(close_close['VRP'])
         ax1.plot(close_close['VRP'].index[-1], close_close['VRP'].iloc[-1],
-                 marker='o', markersize=3, color='cyan')
+                 marker='o', markersize=3, color='lightblue')
         ax1.annotate(f"{close_close['VRP'].iloc[-1]:.2f}",
                      (close_close['VRP'].index[-1], close_close['VRP'].iloc[-1]),
                      textcoords="offset points",
-                     xytext=(0,10), color='cyan',
-                     ha='left')
+                     xytext=(0,10), color='lightblue',
+                     ha='left', fontweight='bold')
         ax1.plot(close_close['rpmean'], color='r', alpha=0.25)
         ax1.plot(close_close['rpmean'] + close_close['std'], color='y', alpha=0.25, label='1σ')
         ax1.plot(close_close['rpmean'] - close_close['std'], color='y', alpha=0.25)
@@ -88,7 +93,11 @@ class MorningStats():
         ax1.plot(close_close['rpmean'] - (close_close['std'] * 2), color='m', alpha=0.25)
         ax1.axhline(0, lw=0.5, color='grey', alpha=0.75, linestyle='--')
         ax1.set_ylabel('Discount(-)/Premium(+)')
-        ax1.set_title('Volatility Risk Premium', loc='left', fontsize=12)
+        if self.symbol == 'SPX':
+            self.sym = 'S&P 500'
+        elif self.symbol == 'NDX':
+            self.sym = 'Nasdaq 100'
+        ax1.set_title(f'Volatility Risk Premium - {self.sym}', loc='left', fontsize=12)
         ax1.grid(True)
         ax1.legend(loc='lower left')  
         ax2.plot(close_close['Close'], label='S&P 500', color='white')
