@@ -54,8 +54,10 @@ class MorningStats():
         plt.annotate(f"{atr_data['ATR'].iloc[-1]:.2f}",
                      (atr_data.index[-1], atr_data['ATR'].iloc[-1]),
                      textcoords="offset points",
-                     xytext=(0,10), color='deeppink',
-                     ha='left', fontweight='bold')
+                     xytext=(0,10), color='m',
+                     ha='left', fontweight='bold',
+                     bbox=dict(boxstyle="round,pad=0.3", 
+                               facecolor=(0, 0, 0, 0.75), edgecolor='none'))
         plt.xlabel('Date')
         plt.ylabel('Range')
         plt.title(f'{self.sym} Trading Range')
@@ -101,7 +103,7 @@ class MorningStats():
         ax2.grid(True)
         ax2.xaxis_date()
         ax2.xaxis.set_major_locator(mdates.MonthLocator())
-        ax2.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'));
+        ax2.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
         plt.setp(ax2.xaxis.get_majorticklabels(), rotation=45)
         plt.tight_layout();
 
