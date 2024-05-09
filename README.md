@@ -18,7 +18,7 @@
 
 4. Navigate to the folder that contains the files in the repository and ensure that the MorningStats.py and RunMS.ipynb are in the same folder.
 
-5. Open RunMS & hit shift+enter until all of the charts are loaded in (should be relatively quick). The code's somewhat buggy, you need to execute the sp.atr() before sp.cc() otherwise it won't work. It's an issue i can live with for personal use.
+5. Open RunMS & hit shift+enter until all of the charts are loaded in (should be relatively quick). 
 
 6. Some of the funcitons
    * .atr() - 20d average trading range
