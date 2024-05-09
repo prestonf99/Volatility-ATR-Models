@@ -25,6 +25,9 @@
    * .cc() - Close-Close Volatility Risk Premium & Underlying
    * .ccs() - Close-Close Premium by itself
    * .vol_spread() - CC Vol Estimator vs Vix.
+   * .yz() - Yang-Zhang Volatility Risk Premium(accounts for OHLC as well as overnight vol)
+   * .yzs() - Yang-Zhang RVOL By itself
+   * .vol_spread_yz() - Yang-Zhang Vol Spread
   
 7. Usage Details in the RunMS File
 
