@@ -29,6 +29,6 @@
    * .yzs() - Yang-Zhang RVOL By itself
    * .vol_spread_yz() - Yang-Zhang Vol Spread
   
-7. Usage Details in the RunMS File
+7. Usage Details in the RunMS File. Currently supports S&P, Nasdaq, and Oil. More coming. 
 
     

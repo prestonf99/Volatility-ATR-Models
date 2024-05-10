@@ -17,6 +17,8 @@ class MorningStats():
             self.symbol = 'SPX'
         elif self.underlying == '^NDX':
             self.symbol = 'NDX'
+        elif self.underlying == 'CL=F':
+            self.symbol = 'OIL'
         self.end_date =  datetime.now()
         self.start_date = self.end_date - timedelta(days=self.days)
         self.ticker = yf.Ticker(self.underlying)
@@ -29,10 +31,15 @@ class MorningStats():
         elif self.symbol == 'NDX':
             self.sym = 'Nasdaq 100'
             self.vol_sym = 'VXN'
+        elif self.symbol == 'OIL':
+            self.sym = 'Crude Oil'
+            self.vol_sym = 'OVX'
         if self.underlying == '^GSPC':
             self.vol = yf.Ticker('^VIX')
         elif self.underlying == '^NDX':
             self.vol = yf.Ticker('^VXN')
+        elif self.underlying == 'CL=F':
+            self.vol = yf.Ticker('^OVX')
         self.vix = self.vol.history(interval='1d', start=self.start_date,
                                  end=self.end_date)
         self.vix.index = self.vix.index.date
@@ -107,10 +114,10 @@ class MorningStats():
         ax1.legend(loc='lower left')  
         ax2.plot(close_close['Close'], label='S&P 500', color='white')
         ax2.set_title(f'{self.symbol}', loc='left', fontsize=12)
-        ax2.grid(True)
-        ax2.xaxis_date()
+        ax2.grid(True);
+        ax2.xaxis_date();
         ax2.xaxis.set_major_locator(mdates.MonthLocator())
-        ax2.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
+        ax2.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'));
         plt.setp(ax2.xaxis.get_majorticklabels(), rotation=45)
         plt.tight_layout();
 
