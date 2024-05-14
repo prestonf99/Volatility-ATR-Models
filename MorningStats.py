@@ -1,5 +1,5 @@
 from fredapi import Fred
-fred = Fred(api_key='YOUR_API_KEY')
+fred = Fred(api_key='4b270099c67ba15fb004b95db057dcb4')
 from pylab import mpl, plt
 import matplotlib.dates as mdates
 import pandas as pd
@@ -67,6 +67,13 @@ class Vols():
         plt.plot(self.close_close['rpmean'] - self.close_close['std'], color='y', alpha=0.25)
         plt.plot(self.close_close['rpmean'] + (self.close_close['std'] * 2), color='m', alpha=0.25, label='2σ')
         plt.plot(self.close_close['rpmean'] - (self.close_close['std'] * 2), color='m', alpha=0.25)
+        plt.plot(self.close_close['VRP'].index[-1], self.close_close['VRP'].iloc[-1],
+                 marker='o', markersize=3, color='paleturquoise')
+        plt.annotate(f"{self.close_close['VRP'].iloc[-1]:.1f}",
+                     (self.close_close['VRP'].index[-1], self.close_close['VRP'].iloc[-1]),
+                     textcoords="offset points",
+                     xytext=(0,10), color='paleturquoise',
+                     ha='left', fontweight='bold')
         plt.legend()
         plt.grid(True)
         plt.subplot(212)
@@ -100,7 +107,20 @@ class Vols():
     def vol_spread(self):
         plt.figure(figsize=(10, 6))
         plt.plot((self.close_close['Vol'] * 100), lw=0.95, label=f'{self.name} CC Volatility')
+        plt.plot((self.close_close['Vol']*100).index[-1], (self.close_close['Vol']*100).iloc[-1],
+                 marker='o', markersize=3, color='paleturquoise')
+        plt.annotate(f"{(self.close_close['Vol']*100).iloc[-1]:.1f}",
+                     ((self.close_close['Vol']*100).index[-1], (self.close_close['Vol']*100).iloc[-1]),
+                     textcoords="offset points",
+                     xytext=(0,10), color='paleturquoise',
+                     ha='left', fontweight='bold')
         plt.plot(self.close_close['VIX'], label=f'{self.vol_label}', color='w')
+        plt.plot(self.close_close['VIX'].index[-1], self.close_close['VIX'].iloc[-1],
+                 marker='o', markersize=3, color='w')
+        plt.annotate(f"{self.close_close['VIX'].iloc[-1]:.1f}",
+                     (self.close_close['VIX'].index[-1], self.close_close['VIX'].iloc[-1]),
+                     textcoords="offset points", xytext=(0,10), color='w',
+                     ha='left', fontweight='bold')
         plt.grid(True)
         plt.title(f'{self.vol_label} and {self.name} 30d Close-Close Volatility')
         plt.legend();
@@ -108,9 +128,21 @@ class Vols():
     def vol_spread_yz(self):
         plt.figure(figsize=(10, 6))
         plt.plot((self.yz['result'] * 100), lw=0.95, label=f'{self.name} Yang-Zhang Volatility')
+        plt.plot((self.yz['result']*100).index[-1], (self.yz['result']*100).iloc[-1],
+                 marker='o', markersize=3, color='paleturquoise')
+        plt.annotate(f"{(self.yz['result']*100).iloc[-1]:.1f}",
+                     ((self.yz['result']*100).index[-1], (self.yz['result']*100).iloc[-1]),
+                     textcoords="offset points", xytext=(0,10), color='paleturquoise',
+                     ha='left', fontweight='bold')
         plt.plot(self.yz['VIX'], label=f'{self.vol_label}', color='w')
+        plt.plot(self.close_close['VIX'].index[-1], self.close_close['VIX'].iloc[-1],
+                 marker='o', markersize=3, color='w')
+        plt.annotate(f"{self.close_close['VIX'].iloc[-1]:.1f}",
+                     (self.close_close['VIX'].index[-1], self.close_close['VIX'].iloc[-1]),
+                     textcoords="offset points", xytext=(0,10), color='w',
+                     ha='left', fontweight='bold')
         plt.grid(True)
-        plt.title(f'{self.vol_label} and {self.name} 30d Close-Close Volatility')
+        plt.title(f'{self.vol_label} and {self.name} 30d Yang-Zhang Volatility')
         plt.legend();
 
     
@@ -138,7 +170,9 @@ class Vols():
         plt.subplot(212)
         plt.plot(self.yz['Close'], label='S&P 500', color='white')
         plt.title(f'{self.name}', loc='left', fontsize=12)
-        plt.grid(True);
+        plt.grid(True)
+        plt.show()
+        print(self.yz['VRP'].index[-1], self.yz['VRP'].iloc[-1]);
 
     def plot_yzs(self):
         plt.figure(figsize=(10, 6))
@@ -160,3 +194,4 @@ class Vols():
         plt.title(f'Yang-Zhang Volatility Risk Premium - {self.name}', loc='left', fontsize=12)
         plt.grid(True)
         plt.legend(loc='lower left');
+
