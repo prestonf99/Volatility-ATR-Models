@@ -2,12 +2,12 @@ import numpy as np
 import pandas as pd
 
 def calc_yz(data, vol):
+    data = data.copy()
     N = len(data)
     window = 30
     lambda_ = 0.94
     alpha = 1 - lambda_
     k = 0.34 / (1.34 + (window + 1) / (window - 1))
-    data = data.copy()
     data['VIX'] = vol['VIX']
     data['log_ho'] = (data['High'] / data['Open']).apply(np.log)
     data['log_lo'] = (data['Low'] / data['Open']).apply(np.log)
@@ -29,6 +29,7 @@ def calc_yz(data, vol):
     data['VRP'] = (data['VIX'] - (data['result'] * 100))
     data['rpmean'] = data['VRP'].ewm(alpha=alpha, adjust=False).mean()
     data['std'] = np.std(data['VRP'])
+    data.dropna(inplace=True)
 
     return data
 
@@ -44,5 +45,6 @@ def calc_cc(data, vol):
     alpha = 1 - lambda_
     data['rpmean'] = data['VRP'].ewm(alpha=alpha, adjust=False).mean()
     data['std'] = np.std(data['VRP'])
+    data.dropna(inplace=True)
 
     return data
