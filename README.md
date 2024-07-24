@@ -10,17 +10,18 @@ github.com/prestonf99
 The objective for this repository was to create scripts that provide relevant information regarding the implied volatility discount/premium and the average trading range (ATR) of various futures products & a few individual large-cap U.S. Equities. These were designed with ease-of-use in mind so traders can quickly observe the volatility situation on a consistent basis. For more information regarding how to read these scripts, refer to Euan Sinclair's "Volatility Trading" (https://www.goodreads.com/book/show/138777693-volatility-trading-website-2nd-edition-by-sinclair-euan-2013-hardc). Our personal use for these scripts is to gain insight on whether a given market is "Overly hedged" or "Overly complacent". This repository is to generate insight about the boarder conditions for traders who already have an existing process for entry criteria and risk management. 
 
 ### Supported Tickers
-    * '^GSPC' - S&P 500 Index
-    * '^NDX' - Nasdaq 100
-    * '^RUT' - Russell 2000
-    * '^DJI' - Down Jones Industrial Average
-    * 'CL=F' - CME Crude Oil Futures
-    * 'GLD' - SPDR Gold Shares ETF
-    * 'AAPL' - Apple Inc. 
-    * 'AMZN' - Amazon.com Inc. 
-    * 'EEM' - iShares MSCI Emerging Markets ETF
-    * 'GS' - Goldman Sachs Group Inc
-    * 'GOOG' - Alphabet Inc Class C (Google Stock)
+
+* '^GSPC' - S&P 500 Index
+* '^NDX' - Nasdaq 100
+* '^RUT' - Russell 2000
+* '^DJI' - Down Jones Industrial Average
+* 'CL=F' - CME Crude Oil Futures
+* 'GLD' - SPDR Gold Shares ETF
+* 'AAPL' - Apple Inc. 
+* 'AMZN' - Amazon.com Inc. 
+* 'EEM' - iShares MSCI Emerging Markets ETF
+* 'GS' - Goldman Sachs Group Inc
+* 'GOOG' - Alphabet Inc Class C (Google Stock)
     
 ## Setting it Up
 
