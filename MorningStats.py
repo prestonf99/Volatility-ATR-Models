@@ -1,5 +1,5 @@
 from fredapi import Fred
-fred = Fred(api_key='4b270099c67ba15fb004b95db057dcb4')
+fred = Fred(api_key='YOUR_API_KEY')
 from pylab import mpl, plt
 import matplotlib.dates as mdates
 import pandas as pd
