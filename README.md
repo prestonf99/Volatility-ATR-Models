@@ -41,11 +41,14 @@ The objective for this repository was to create scripts that provide relevant in
 
         (base): C:\Users\your_computer> jupyter lab
 
-5. Navigate to the folder that contains the files in the repository and ensure that the MorningStats.py and RunMS.ipynb are in the same folder.
+5. Navigate to the folder that contains the files in the repository and ensure that `MorningStats.py`, `calc_stats`, `helper.py` and `RunMS.ipynb` are in the same folder.
 
-6. Opening the MorningStats.py file and insert your St Louis Fed API key on the second line.  
+6. Open the MorningStats.py file and insert your St Louis Fed API key on the second line.  
 
-7. Open RunMS & hit shift+enter until all of the charts are loaded in (should be relatively quick). 
+7. Open `RunMS.ipynb` & hit shift+enter until all of the charts are loaded in (should be relatively quick).
+
+   * The file's purpose is to showcase the broad range of tickers & functions that you can use. Feel free to make your own jupyter notebook and play around with it as you see fit! You can specify the date range & ticker however you'd like. 
+   * The bands on the Volatility Risk Premium charts are as follows. The red line is the 30d exponentially weighted moving average's mean value. The yellow lines are the +1σ/-1σ of the red line. The pink lines are the +2σ/-2σ of the red line. 
 
 8. Some of the funcitons
    * .atr() - 20d average trading range
