@@ -13,18 +13,23 @@ The objective for this repository was to create scripts that provide relevant in
 Before getting into the installation of the repository and the installation process, let's go through some of the visualizations. 
 
 **_ATR_**: For active traders, knowing the average trading range for whatever product you're looking at is an important part of the preparation process. Looking at this daily in conjunction with other factors, such as the overnight volume, help lay the groundwork for what to expect from a given trading session. You can only retrieve the 20-day average.
+
 ![ATR](Vol_Examples/ATR.png)
 
 **_Close-Close Volatility Estimator_**: This estimator calculates the realized volatility by *only* looking at the closing price of the product you're viewing.
+
 ![CC](Vol_Examples/Close_Close.png)
 
 **_Close-Close Volatility Spread_**: Calculates realized volatility using the methodology described above. But it doesn't calculate the 'risk premium', so traders can just look at the volatility spread by itself. 
+
 ![CC Spread](Vol_Examples/CC_spread.png)
 
 **_Yang-Zhang Volatility Estimator_**: This estimator is a weighted average of three separate variance measures. They are close to close, open to close, and intraday high-low variance. It is useful because it accounts for overnight gaps, accounts for intraday variance which improves accuracy, and improves efficiency due to its use of multiple inputs. This is our preferred estimator, especially when the asset in question tends to have overnight gaps or large intraday swings. 
+
 ![Yang Zhang](Vol_Examples/Yang_Zhang.png)
 
 **_Yang-Zhang Spread_**: Same visualization as the Close-Close Spread, but with the Yang Zhang methodology to calculate the realized volatility. 
+
 ![YZ Spread](Vol_Examples/Yang_Zhang_Spread.png)
 
 ### Supported Tickers
